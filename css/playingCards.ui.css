@@ -64,7 +64,7 @@ top: 0.3em;
 .playingCard .face {
 position: absolute;
 z-index:1;
-border: 10px solid #000;
+border: 1px solid #000;
 left: 0.6em;
 top: 0.45em;
 width: 2.5em;
