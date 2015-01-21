@@ -14,9 +14,9 @@ h2 {
 }
 
 #error {
-  display: *ahem*... your hand is empty!;
+  display: none;
   color:  #ffffff;
-  border: 1px solid #ffffff;
+  border: 0px solid #ffffff;
   padding: 5px;
   margin: 5px;
 }
