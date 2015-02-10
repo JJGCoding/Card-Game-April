@@ -3,6 +3,7 @@ $(document).ready(function(){
     cardDeck.spread(); // show it
 
     var hand = [];
+    var hand2 = [];
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
@@ -11,6 +12,11 @@ $(document).ready(function(){
     }
     var showHand = function(){
         var el = $('#yourHand')
+        el.html('');
+        for(var i=0;i<hand.length;i++){
+            el.append(hand[i].getHTML());
+        }
+        el = $('#compHand')
         el.html('');
         for(var i=0;i<hand.length;i++){
             el.append(hand[i].getHTML());
@@ -30,6 +36,9 @@ $(document).ready(function(){
         cardDeck.spread();
         showHand();
     }
+    
+    
+    
     var doOrderByRank = function(){
         cardDeck.orderByRank();
         cardDeck.spread(); // update card table
@@ -44,6 +53,15 @@ $(document).ready(function(){
         doShuffle();
         doDrawCard();
     });
+    
+    $('#shuffler').click(doShuffle);
+    $('#draw').click(doDrawCard);
+    $('#shuffleDraw').click(function(){
+        doShuffle();
+        doDrawCard();
+    });
+    
+    
     $('#addCard').click(function(){
         if(!hand.length){
             showError('your hand is empty');
