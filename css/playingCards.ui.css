@@ -15,11 +15,10 @@ font-size: 20px;
 float: left;
 width: 3.8em;
 height: 5em;
-padding: 4px;
 }
 
 .playingCard .front {
-background-color: #66CCFF;
+background-color: #fff;
 color: #000;
 position: absolute;
 width: 100%;
