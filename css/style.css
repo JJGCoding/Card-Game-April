@@ -1,12 +1,13 @@
 body {
-  font-family: "Comic Sans", Helvetica, Arial;
-  background-color: #157F27;
-  color: #ffffff;
+  font-family: "Times New Roman", "Comic Sans", Helvetica, Arial;
+  background-color: #200439;
+  color: #000000;
 }
 
 #container {
   margin: 0 auto;
   width: 860px;
+  color: #ffffff;
 }
 
 h2 {
@@ -16,7 +17,7 @@ h2 {
 #error {
   display: none;
   color:  #ffffff;
-  border: 0px solid #ffffff;
+  border: 1px solid #ffffff;
   padding: 5px;
   margin: 5px;
 }
