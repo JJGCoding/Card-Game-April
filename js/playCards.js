@@ -4,22 +4,30 @@ $(document).ready(function(){
 
     var hand = [];
     var hand1 = [];
+    var discardPile = [];
+    
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
             $('#error').fadeOut('slow');
         },3000);
     }
-    var showHand = function(){
+    var showHands = function(){
         var el = $('#yourHand')
         el.html('');
-        for(var i=0;i<hand.length;i++){
+        for (var i=0; i<hand.length; i++){
             el.append(hand[i].getHTML());
         }
-        el = $('#CompHand')
+        el = $('#computerHand')
         el.html('');
-        for(var i=0;i<hand1.length;i++){
+        for (var i=0; i<hand1.length; i++){
             el.append(hand1[i].getHTML());
+        }
+        
+        el = $('#discardPile')
+        el.html('');
+        for (var i=0; i<discardPile.length; i++){
+            el.append(discardPile[i].getHTML());
         }
     }
     var doShuffle = function(){
@@ -34,20 +42,37 @@ $(document).ready(function(){
         }
         hand[hand.length] = c;
         cardDeck.spread();
-        showHand();
+        showHands();
     }
-    var doDrawCard = function(){
-       var c = cardDeck.draw();
+    var doDrawCard1 = function(){
+        var c = cardDeck.draw();
         if(!c){
             showError('no more cards');
             return;
         }
-        hand[hand.length] = c;
+        hand1[hand1.length] = c;
         cardDeck.spread();
-        showHand();
+        showHands();
+    }
+        
+    var doBackToDeck = function(){
+        if(!discardPile.length){
+         showError('Discard Pile is empty');
+         return;
+        }
+        var c = discardPile.pop();
+        cardDeck.addCard(c);
+        cardDeck.spread();
+        showHands();
     }
     
     
+    var doDeal = function(){
+        for (var i=0; i<7; i++){
+            doDrawCard();
+            doDrawCard1();
+        }
+    }
     var doOrderByRank = function(){
         cardDeck.orderByRank();
         cardDeck.spread(); // update card table
@@ -56,27 +81,55 @@ $(document).ready(function(){
         cardDeck.orderBySuit();
         cardDeck.spread(); // update card table
     }
+    var doEmptyDiscardPile = function(){
+        if(!discardPile.length){
+         showError('Discard Pile is empty');
+         return;
+        }
+        var n = discardPile.length;
+        var c;
+        for(i = 0; i < n; i++)
+        {
+        c = discardPile.pop();
+        cardDeck.addCard(c);
+        cardDeck.spread();
+        showHands();
+        }
+    }
+    $('#emptyDiscardPile').click(doEmptyDiscardPile);
+    $('#backToDeck').click(doBackToDeck);
     $('#shuffler').click(doShuffle);
+    $('#dealer').click(doDeal);
     $('#draw').click(doDrawCard);
     $('#draw1').click(doDrawCard1);
     $('#shuffleDraw').click(function(){
         doShuffle();
         doDrawCard();
     });
-    
-    
     $('#addCard').click(function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
         }
         var c = hand.pop();
-        showHand();
-        cardDeck.addCard(c);
-        cardDeck.spread();
+        showHands();
+        discardPile[discardPile.length] = c;
+        showHands();
+    });
+    $('#addCard1').click(function(){
+        if(!hand1.length){
+            showError('your hand is empty');
+            return;
+        }
+        var c = hand1.pop();
+        showHands();
+        discardPile[discardPile.length] = c;
+        showHands();
     });
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
+    
+
 
 });
 /*
