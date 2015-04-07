@@ -19,7 +19,7 @@ $(document).ready(function(){
         el.html('');
         for(var i=0;i<hand.length;i++){
             el.append(hand[i].getHTML());
-    }
+        }
         
         el = $('#CompHand');
         el.html('');
@@ -30,7 +30,8 @@ $(document).ready(function(){
         el = $('#discardPile');
         el.html('');
         for(var i=0;i<discardPile.length;i++){
-            el.append(discardPile[i].getHTML());}  
+            el.append(discardPile[i].getHTML());
+        }  
     }
     var doShuffle = function(){
         cardDeck.shuffle();
@@ -59,10 +60,10 @@ $(document).ready(function(){
     }
 
     var doDeal = function(){
-      for(var i=0;i<7;i++){
-       doDrawCard1();
-        doDrawCard();
-        cardDeck.spread();
+        for(var i=0;i<7;i++){
+            doDrawCard1();
+            doDrawCard();
+            cardDeck.spread();
         }
     }
     var doOrderByRank = function(){
@@ -103,25 +104,22 @@ $(document).ready(function(){
     
     var doTakeCard = function(){
         if(!hand1.length){
-            showError('your hand is empty');
+            showError('the hand is empty');
             return;
         }
         var c = hand1.pop();
+        hand[hand.length] = c;
         showHand();
-         hand[hand.length] = c;
-            showHand();
-        
     });
     
     var doTakeCard1 = function(){
         if(!hand.length){
-            showError('your hand is empty');
+            showError('the hand is empty');
             return;
         }
         var c = hand.pop();
-        showHand();
         hand1[hand1.length] = c;
-           showHand();
+        showHand();
     });
     
     $('#deal').click(doDeal);
