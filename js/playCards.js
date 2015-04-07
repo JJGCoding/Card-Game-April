@@ -86,9 +86,10 @@ $(document).ready(function(){
             return;
         }
         var c = hand.pop();
-        showHand();
+
         cardDeck.addCard(c);
-        cardDeck.spread();
+        cardDeck.spread();        
+        showHand();
     });
   
      var doAddCard1 = function(){
@@ -97,9 +98,10 @@ $(document).ready(function(){
             return;
         }
         var c = hand1.pop();
-        showHand();
+        
         cardDeck.addCard(c);
         cardDeck.spread();
+        showHand();
     });
     
     var doTakeCard = function(){
