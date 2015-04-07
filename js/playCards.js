@@ -5,6 +5,9 @@ $(document).ready(function(){
 
     var hand = [];
     var hand1 = [];
+    var discardPile = [];
+    
+    
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
@@ -15,15 +18,19 @@ $(document).ready(function(){
         var el = $('#yourHand');
         el.html('');
         for(var i=0;i<hand.length;i++){
-            el.append(hand[i].getHTML());}
+            el.append(hand[i].getHTML());
+    }
+        
         el = $('#CompHand');
         el.html('');
         for(var i=0;i<hand1.length;i++){
-            el.append(hand1[i].getHTML());}    
-              el = $('#Discard');
+            el.append(hand1[i].getHTML());
+        }    
+        
+        el = $('#discardPile');
         el.html('');
-        for(var i=0;i<hand1.length;i++){
-            el.append(hand1[i].getHTML());}  
+        for(var i=0;i<discardPile.length;i++){
+            el.append(discardPile[i].getHTML());}  
     }
     var doShuffle = function(){
         cardDeck.shuffle();
@@ -65,16 +72,14 @@ $(document).ready(function(){
     var doOrderBySuit = function(){
         cardDeck.orderBySuit();
         cardDeck.spread(); // update card table
-    }
-    $('#deal').click(doDeal);
-    $('#shuffler').click(doShuffle);
-    $('#draw').click(doDrawCard);
-    $('#draw1').click(doDrawCard1);
-    $('#shuffleDraw').click(function(){
+    };
+    
+    var doShuffleDraw = function(){
         doShuffle();
         doDrawCard();
     });
-    $('#addCard').click(function(){
+    
+    var doAddCard = function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
@@ -85,7 +90,7 @@ $(document).ready(function(){
         cardDeck.spread();
     });
   
-     $('#addCard1').click(function(){
+     var addCard1 = function(){
         if(!hand1.length){
             showError('your hand is empty');
             return;
@@ -96,7 +101,7 @@ $(document).ready(function(){
         cardDeck.spread();
     });
     
-     $('#takeCard').click(function(){
+    var takeCard = function(){
         if(!hand1.length){
             showError('your hand is empty');
             return;
@@ -108,7 +113,7 @@ $(document).ready(function(){
         
     });
     
-    $('#takeCard1').click(function(){
+    var takeCard1 = function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
@@ -118,8 +123,16 @@ $(document).ready(function(){
         hand1[hand1.length] = c;
            showHand();
     });
-   
-   
+    
+    $('#deal').click(doDeal);
+    $('#shuffler').click(doShuffle);
+    $('#draw').click(doDrawCard);
+    $('#draw1').click(doDrawCard1);
+    $('#shuffleDraw').click(doShuffleDraw);
+    $('#takeCard').click(doTakeCard);
+    $('#takeCard1').click(doTakeCard1);
+    $('#addCard').click(doAddCard);
+    $('#addCard1').click(doAddCard1);
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
 
