@@ -2,33 +2,28 @@ $(document).ready(function(){
     var cardDeck = $("#cardDeck").playingCards();
     cardDeck.spread(); // show it
 
+
     var hand = [];
     var hand1 = [];
-    var discardPile = [];
-    
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
             $('#error').fadeOut('slow');
         },3000);
     }
-    var showHands = function(){
-        var el = $('#yourHand')
+    var showHand = function(){
+        var el = $('#yourHand');
         el.html('');
-        for (var i=0; i<hand.length; i++){
-            el.append(hand[i].getHTML());
-        }
-        el = $('#computerHand')
+        for(var i=0;i<hand.length;i++){
+            el.append(hand[i].getHTML());}
+        el = $('#CompHand');
         el.html('');
-        for (var i=0; i<hand1.length; i++){
-            el.append(hand1[i].getHTML());
-        }
-        
-        el = $('#discardPile')
+        for(var i=0;i<hand1.length;i++){
+            el.append(hand1[i].getHTML());}    
+              el = $('#Discard');
         el.html('');
-        for (var i=0; i<discardPile.length; i++){
-            el.append(discardPile[i].getHTML());
-        }
+        for(var i=0;i<hand1.length;i++){
+            el.append(hand1[i].getHTML());}  
     }
     var doShuffle = function(){
         cardDeck.shuffle();
@@ -37,40 +32,30 @@ $(document).ready(function(){
     var doDrawCard = function(){
         var c = cardDeck.draw();
         if(!c){
-            showError('no more cards');
+            showError('You are out of Cards!');
             return;
         }
         hand[hand.length] = c;
         cardDeck.spread();
-        showHands();
+        showHand();
     }
+    
     var doDrawCard1 = function(){
         var c = cardDeck.draw();
         if(!c){
-            showError('no more cards');
+            showError('You are out of Cards!');
             return;
         }
         hand1[hand1.length] = c;
         cardDeck.spread();
-        showHands();
+        showHand();
     }
-        
-    var doBackToDeck = function(){
-        if(!discardPile.length){
-         showError('Discard Pile is empty');
-         return;
-        }
-        var c = discardPile.pop();
-        cardDeck.addCard(c);
-        cardDeck.spread();
-        showHands();
-    }
-    
-    
+
     var doDeal = function(){
-        for (var i=0; i<7; i++){
-            doDrawCard();
-            doDrawCard1();
+      for(var i=0;i<7;i++){
+       doDrawCard1();
+        doDrawCard();
+        cardDeck.spread();
         }
     }
     var doOrderByRank = function(){
@@ -81,25 +66,8 @@ $(document).ready(function(){
         cardDeck.orderBySuit();
         cardDeck.spread(); // update card table
     }
-    var doEmptyDiscardPile = function(){
-        if(!discardPile.length){
-         showError('Discard Pile is empty');
-         return;
-        }
-        var n = discardPile.length;
-        var c;
-        for(i = 0; i < n; i++)
-        {
-        c = discardPile.pop();
-        cardDeck.addCard(c);
-        cardDeck.spread();
-        showHands();
-        }
-    }
-    $('#emptyDiscardPile').click(doEmptyDiscardPile);
-    $('#backToDeck').click(doBackToDeck);
+    $('#deal').click(doDeal);
     $('#shuffler').click(doShuffle);
-    $('#dealer').click(doDeal);
     $('#draw').click(doDrawCard);
     $('#draw1').click(doDrawCard1);
     $('#shuffleDraw').click(function(){
@@ -112,24 +80,48 @@ $(document).ready(function(){
             return;
         }
         var c = hand.pop();
-        showHands();
-        discardPile[discardPile.length] = c;
-        showHands();
+        showHand();
+        cardDeck.addCard(c);
+        cardDeck.spread();
     });
-    $('#addCard1').click(function(){
+  
+     $('#addCard1').click(function(){
         if(!hand1.length){
             showError('your hand is empty');
             return;
         }
         var c = hand1.pop();
-        showHands();
-        discardPile[discardPile.length] = c;
-        showHands();
+        showHand();
+        cardDeck.addCard(c);
+        cardDeck.spread();
     });
+    
+     $('#takeCard').click(function(){
+        if(!hand1.length){
+            showError('your hand is empty');
+            return;
+        }
+        var c = hand1.pop();
+        showHand();
+         hand[hand.length] = c;
+            showHand();
+        
+    });
+    
+    $('#takeCard1').click(function(){
+        if(!hand.length){
+            showError('your hand is empty');
+            return;
+        }
+        var c = hand.pop();
+        showHand();
+        hand1[hand1.length] = c;
+           showHand();
+    });
+   
+   
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
-    
-
 
 });
 /*
