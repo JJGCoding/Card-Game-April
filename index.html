@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Card Game</title>
+  <title>Thomas' Card Game</title>
   <link rel="stylesheet" type="text/css" href="css/playingCards.ui.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <div id="container">
     <div id="error"></div>
-    <h2>2.0</h2>
+
+
     <div>
       <h2>Your Hand</h2>
       <input type="button" id="draw" value="draw a card" />
       <input type="button" id="addCard" value="add drawn card back" />
+      <input type="button" id="takeCard" value="Steal Opponent Card" />
       <br><br>
       <div id="yourHand"></div>
     </div>
@@ -21,35 +23,26 @@
       <h2>Computer Hand</h2>
       <input type="button" id="draw1" value="draw a card" />
       <input type="button" id="addCard1" value="add drawn card back" />
+      <input type="button" id="takeCard1" value="Steal Opponent Card" />
       <br><br>
-      <div id="computerHand"></div>
+      <div id="CompHand"></div>
     </div>
     
-    <div>
-      <h2><br>Discard Pile</h2>
-      <input type="button" id="backToDeck" value="Add card back to deck." />
-      <input type="button" id="emptyDiscardPile" value="Add all discarded cards back to card deck." />
-      <div id="discardPile"></div>
-    </div>
     <div>
       <h2><br>Card Deck</h2>
       <input type="button" id="shuffler" value="shuffle" />
-      <input type="button" id="dealer" value="deal" />
-      <input type="button" id="orderBySuit" value="order by suit" />
       <input type="button" id="orderByRank" value="order by rank" />
-      <input type="button" id="orderByRankAndSuit" value="order by rank and suit" />
+      <input type="button" id="orderBySuit" value="order by suit" />
+      <input type="button" id="deal" value="deal cards" />
       <br><br>
       <div id="cardDeck"></div>
     </div>
-    
-    
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/playingCards.js"></script>
+    <script type="text/javascript" src="js/playingCards.ui.js"></script>
+    <script type="text/javascript" src="js/playCards.js"></script>
 
   </div>
-  
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/playingCards.js"></script>
-  <script type="text/javascript" src="js/playingCards.ui.js"></script>
-  <script type="text/javascript" src="js/playCards.js"></script>
 </body>
 </html>
-
