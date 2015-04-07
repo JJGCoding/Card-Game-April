@@ -90,7 +90,7 @@ $(document).ready(function(){
         cardDeck.spread();
     });
   
-     var addCard1 = function(){
+     var doAddCard1 = function(){
         if(!hand1.length){
             showError('your hand is empty');
             return;
@@ -101,7 +101,7 @@ $(document).ready(function(){
         cardDeck.spread();
     });
     
-    var takeCard = function(){
+    var doTakeCard = function(){
         if(!hand1.length){
             showError('your hand is empty');
             return;
@@ -113,7 +113,7 @@ $(document).ready(function(){
         
     });
     
-    var takeCard1 = function(){
+    var doTakeCard1 = function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
