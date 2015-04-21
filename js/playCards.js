@@ -122,7 +122,7 @@ $(document).ready(function(){
         showHand();
     };
     
-    var doBackToDeck = function(){
+    var doDiscardToCardDeck = function(){
         if(!discardPile.length){
             showError('the discard pile is empty');
             return;
@@ -142,7 +142,7 @@ $(document).ready(function(){
     $('#takeCard1').click(doTakeCard1);
     $('#addCard').click(doAddCard);
     $('#addCard1').click(doAddCard1);
-    $('#backToDeck').click(doBackToDeck);
+    $('#discardToCardDeck').click(doDiscardToCardDeck);
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
 
