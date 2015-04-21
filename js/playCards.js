@@ -122,7 +122,7 @@ $(document).ready(function(){
         showHand();
     };
     
-    var doTakeCard = function(){
+    var doBackToDeck = function(){
         if(!discardPile.length){
             showError('the discard pile is empty');
             return;
@@ -132,7 +132,7 @@ $(document).ready(function(){
         showHand();
     };
     
-    
+   
     $('#deal').click(doDeal);
     $('#shuffler').click(doShuffle);
     $('#draw').click(doDrawCard);
@@ -142,6 +142,7 @@ $(document).ready(function(){
     $('#takeCard1').click(doTakeCard1);
     $('#addCard').click(doAddCard);
     $('#addCard1').click(doAddCard1);
+    $('#backToDeck').click(doBackToDeck);
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
 
