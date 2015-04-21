@@ -122,6 +122,17 @@ $(document).ready(function(){
         showHand();
     };
     
+    var doTakeCard = function(){
+        if(!discardPile.length){
+            showError('the discard pile is empty');
+            return;
+        }
+        var c = cardDeck.pop();
+        cardDeck[cardDeck.length] = c;
+        showHand();
+    };
+    
+    
     $('#deal').click(doDeal);
     $('#shuffler').click(doShuffle);
     $('#draw').click(doDrawCard);
