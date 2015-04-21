@@ -78,7 +78,7 @@ $(document).ready(function(){
     var doShuffleDraw = function(){
         doShuffle();
         doDrawCard();
-    });
+    };
     
     var doAddCard = function(){
         if(!hand.length){
@@ -90,7 +90,7 @@ $(document).ready(function(){
         cardDeck.addCard(c);
         cardDeck.spread();        
         showHand();
-    });
+    };
   
      var doAddCard1 = function(){
         if(!hand1.length){
@@ -102,7 +102,7 @@ $(document).ready(function(){
         cardDeck.addCard(c);
         cardDeck.spread();
         showHand();
-    });
+    };
     
     var doTakeCard = function(){
         if(!hand1.length){
@@ -112,7 +112,7 @@ $(document).ready(function(){
         var c = hand1.pop();
         hand[hand.length] = c;
         showHand();
-    });
+    };
     
     var doTakeCard1 = function(){
         if(!hand.length){
@@ -122,7 +122,7 @@ $(document).ready(function(){
         var c = hand.pop();
         hand1[hand1.length] = c;
         showHand();
-    });
+    };
     
     $('#deal').click(doDeal);
     $('#shuffler').click(doShuffle);
