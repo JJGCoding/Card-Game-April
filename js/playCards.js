@@ -87,8 +87,7 @@ $(document).ready(function(){
         }
         var c = hand.pop();
 
-        cardDeck.addCard(c);
-        cardDeck.spread();        
+   discardPile[discardPile.length] = c;
         showHand();
     };
   
@@ -99,8 +98,7 @@ $(document).ready(function(){
         }
         var c = hand1.pop();
         
-        cardDeck.addCard(c);
-        cardDeck.spread();
+    discardPile[discardPile.length] = c;
         showHand();
     };
     
