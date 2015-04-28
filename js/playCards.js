@@ -127,8 +127,8 @@ $(document).ready(function(){
             showError('the discard pile is empty');
             return;
         }
-        var c = cardDeck.pop();
-        discardPile[discardPile.length] = c;
+        var c = discardPile.pop();
+        cardDeck[cardDeck.length] = c;
         showHand();
     };
     
