@@ -131,6 +131,7 @@ $(document).ready(function(){
         cardDeck[cardDeck.length] = c;
         showHand();
         cardDeck.spread();
+        cardDeck.count();
     };
     
    
