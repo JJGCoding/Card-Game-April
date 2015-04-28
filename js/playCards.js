@@ -129,7 +129,8 @@ $(document).ready(function(){
         }
         var c = discardPile.pop();
         cardDeck[cardDeck.length] = c;
-        cardDeck.spread();
+        
+        
         showHand();
     };
     
